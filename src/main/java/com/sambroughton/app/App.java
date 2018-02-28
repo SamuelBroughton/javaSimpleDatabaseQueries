@@ -9,9 +9,18 @@ import java.util.Scanner;
 
 public class App {
     
+    /**
+     * Main method
+     * 
+     * @param args
+     * @throws SQLException
+     */
     public static void main( String[] args ) throws SQLException {        
         
+        // Scanner used for Command line input
         Scanner scanner = new Scanner(System.in);
+        
+        // Database connection variables
         String URL = "jdbc:mysql://localhost:3306/foodmart";
         String USER = "root";
         String PASSWORD = "84Rts5-G.";
@@ -48,7 +57,9 @@ public class App {
             System.out.println("Results of query:");
             System.out.println();
             while (rs.next()) {
-                System.out.println(rs.getString("department_description") + " | "+ rs.getString("pay_type") + " | " + rs.getString("education_level"));
+                System.out.println(rs.getString("department_description") + " | "
+                                 + rs.getString("pay_type") + " | " 
+                                 + rs.getString("education_level"));
             }
             
         } catch (Exception e) {
@@ -57,8 +68,3 @@ public class App {
         }
     }
 }
-/*
-SELECT foodmart.department.department_description, foodmart.employee.education_level
-FROM foodmart.department
-INNER JOIN foodmart.employee ON foodmart.department.department_id=foodmart.employee.department_id;
-*/
